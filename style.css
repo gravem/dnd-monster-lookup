@@ -1,0 +1,198 @@
+/* Css reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Styling */
+
+.jim-nightshade-regular {
+  font-family: 'Jim Nightshade', cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(255, 228, 192);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  max-height: 100svh;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+}
+
+.container {
+  background-color: #f1dabb;
+  border-radius: 1rem;
+  padding: 4rem;
+  box-shadow:
+    10px 10px 10px rgba(59, 23, 23, 0.2),
+    inset 1px 1px 1px #fff,
+    inset -1px -1px 1px #662f2f;
+  width: 28rem;
+  margin-top: 4rem;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900;
+  font-size: 2.49rem;
+  color: #e9d1b3;
+  text-shadow:
+    0 1px 0.5px #fff,
+    0 -1px 0.5px #852323;
+}
+
+#monsterInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  text-decoration: underline 3px rgb(99, 20, 6);
+  background: none;
+}
+
+#monsterInput:focus {
+  outline: solid 0px white;
+}
+
+#searchButton {
+  background-color: #e9d1b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+  box-shadow:
+    1px 1px 2px rgba(59, 23, 23, 0.2),
+    inset 1px 1px 1px #fff,
+    inset -1px -1px 1px #662f2f;
+}
+
+#searchButton:hover {
+  transition: all 0.3s ease-in-out;
+  box-shadow:
+    5px 5px 10px rgba(59, 23, 23, 0.2),
+    inset 1px 1px 1px #fff,
+    inset -1px -1px 1px #662f2f;
+}
+
+#searchButton:focus {
+  outline: 0px solid rgb(0, 0, 0);
+  transition: all 0.3s ease-in-out;
+  box-shadow:
+    5px 5px 10px rgba(59, 23, 23, 0.2),
+    inset 1px 1px 1px #fff,
+    inset -1px -1px 1px #662f2f;
+}
+
+#searchButton:active {
+  outline: 0px solid rgb(0, 0, 0);
+  transition: all 0.1s;
+  box-shadow:
+    1px 1px 2px rgba(59, 23, 23, 0.2),
+    inset 1px 1px 1px #fff,
+    inset -1px -1px 1px #662f2f;
+}
+
+.monster-result {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.monster-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* Adjust this value as needed */
+}
+
+/* Awesomplete styling */
+.awesomplete {
+  border-radius: 4px;
+  max-height: 100vh;
+  overflow-y: auto;
+  z-index: 10;
+  border: none;
+}
+
+/* .awesomplete input {
+
+} */
+
+.awesomplete ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  color: #696969;
+  font-size: 1rem;
+  line-height: 1rem;
+  width: 15rem;
+  margin: auto;
+  max-height: 70svh;
+  overflow: hidden;
+}
+
+.awesomplete li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.awesomplete li:hover,
+.awesomplete li[aria-selected='true'] {
+  background-color: #ddd;
+}
+
+.awesomplete .visually-hidden {
+  display: none;
+}
