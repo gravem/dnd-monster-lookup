@@ -120,10 +120,91 @@
   <body>
     <div class="container">
       <h1>Monster search</h1>
+      <button id="uncheckAllBtn">Uncheck All</button>
+      <div id="sourceFilter">
+        <label>
+          <input
+            type="checkbox"
+            value="all"
+            checked
+          />
+          All Sources
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="5e-srd"
+          />
+          5e SRD
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="homebrew"
+          />
+          Homebrew
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="tob"
+          />
+          Tome of Beasts
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="tob2"
+          />
+          Tome of Beasts 2
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="tob3"
+          />
+          Tome of Beasts 3
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="tob-2023"
+          />
+          Tome of Beasts 2023
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="cc"
+          />
+          Creature Codex
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="menagerie"
+          />
+          Menagerie
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="wotc-srd"
+          />
+          WotC SRD
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="blackflag"
+          />
+          Blackflag
+        </label>
+      </div>
       <input
         type="text"
         id="monsterInput"
-        class="awesomplete jim-nightshade-regular"
+        class="awesomplete"
         placeholder="What monster?"
       />
       <button id="searchButton">Fetch monster</button>

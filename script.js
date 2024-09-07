@@ -27,19 +27,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadMonsters();
 
-  // Fuzzy search for autocomplete
+  // Utility function to get selected sources from checkboxes
+  function getSelectedSources() {
+    const checkboxes = sourceFilter.querySelectorAll('input[type="checkbox"]');
+    const selected = Array.from(checkboxes)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+
+    // If "all" is selected, ignore others
+    if (selected.includes('all')) {
+      return ['all'];
+    }
+
+    return selected;
+  }
+
+  // Uncheck 'all' when other sources are selected and opposite
+  sourceFilter.addEventListener('change', (event) => {
+    const allCheckbox = sourceFilter.querySelector('input[value="all"]');
+
+    if (event.target.value !== 'all' && event.target.checked) {
+      allCheckbox.checked = false;
+    }
+
+    if (event.target.value === 'all' && event.target.checked) {
+      const checkboxes = sourceFilter.querySelectorAll(
+        'input[type="checkbox"]'
+      );
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.value !== 'all') {
+          checkbox.checked = false;
+        }
+      });
+    }
+  });
+
+  // Fuzzy search for autocomplete, with source filtering
   monsterInput.addEventListener('input', () => {
-    const fuse = new Fuse(monsters, {
-      keys: ['name', 'source', 'challenge_rating'], // Customize fields used for fuzzy search
+    const selectedSources = getSelectedSources();
+
+    // Filter monsters by selected sources
+    const filteredMonsters = monsters.filter((monster) => {
+      // If 'all' is selected or no source is selected, return all monsters
+      if (selectedSources.includes('all')) return true;
+      return selectedSources.includes(monster.source);
+    });
+
+    const fuse = new Fuse(filteredMonsters, {
+      keys: ['name'], // Customize fields used for fuzzy search
       threshold: 0.3, // Adjust threshold for match sensitivity
     });
-    const results = fuse
-      .search(monsterInput.value)
-      .map((result) => result.item.name);
 
-    console.log('Search results:', results); // Check if search results are populated correctly
-    // Ensure Awesomplete list is updated properly
+    const results = fuse.search(monsterInput.value).map((result) => ({
+      label: `${result.item.name} (${result.item.source}) (CR: ${result.item.challenge_rating})`, // Display name + source in suggestions
+      value: result.item.name, // Use only the name for selection
+    }));
+
+    // Populate Awesomplete with formatted suggestions
     awesomplete.list = results;
+  });
+
+  // Utility function to uncheck all checkboxes except 'all'
+  uncheckAllBtn.addEventListener('click', () => {
+    const checkboxes = sourceFilter.querySelectorAll('input[type="checkbox"');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+
+    // Recheck 'all'
+    const allCheckbox = sourceFilter.querySelector('input[value="all"]');
+    allCheckbox.checked = true;
+
+    // Reset the autocomplete and search
+    monsterInput.value = '';
+    awesomplete.list = [];
   });
 
   // Add event listener for search button
@@ -127,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <h2 class="monster-name">${monsterData.name}</h2>
         ${imageUrl ? `<img src="${imageUrl}" alt="${monsterData.name}" class="monster-image">` : ''}
 
+        <p><strong>Source:</strong> ${monsterData.document__slug}</p>
         <p><strong>Type:</strong> ${monsterData.size} ${monsterData.type}, ${monsterData.alignment}</p>
         <p><strong>Armor Class:</strong> ${armorClass}</p>
         <p><strong>Hit Points:</strong> ${monsterData.hit_points} (${monsterData.hit_dice})</p>
