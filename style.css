@@ -196,3 +196,75 @@ h1 {
 .awesomplete .visually-hidden {
   display: none;
 }
+
+.monster-stat-block {
+  border: 1px solid #444;
+  padding: 16px;
+  background-color: #f9f9f9;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.monster-name {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.monster-image {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+}
+
+.monster-abilities,
+.monster-actions,
+.monster-legendary-actions,
+.monster-spells {
+  margin-top: 20px;
+}
+
+h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.monster-spells p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.spell-stat-block {
+  border: 1px solid #444;
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-top: 10px;
+}
+
+.spell-stat-block h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.spell-list button {
+  margin: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
