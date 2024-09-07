@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fuzzy search for autocomplete
   monsterInput.addEventListener('input', () => {
     const fuse = new Fuse(monsters, {
-      keys: ['name'], // Customize fields used for fuzzy search
+      keys: ['name', 'source', 'challenge_rating'], // Customize fields used for fuzzy search
       threshold: 0.3, // Adjust threshold for match sensitivity
     });
     const results = fuse
@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageUrl = monsterData.img_main ? monsterData.img_main : '';
     const actions = monsterData.actions || [];
     const legendaryActions = monsterData.legendary_actions || [];
+    const specialAbilities = monsterData.special_abilities || [];
     const spellList = monsterData.spell_list || [];
 
     const statBlockHtml = `
@@ -158,6 +159,19 @@ document.addEventListener('DOMContentLoaded', () => {
             ${actions.map((action) => `<li><strong>${action.name}:</strong> ${action.desc}</li>`).join('')}
           </ul>
         </div>
+
+        ${
+          specialAbilities.length > 0
+            ? `
+          <div class="monster-special-abilities">
+            <h3>Special Abilities</h3>
+            <ul>
+              ${specialAbilities.map((ability) => `<li><strong>${ability.name}:</strong> ${ability.desc}</li>`).join('')}
+            </ul>
+          </div>
+          `
+            : ''
+        }
 
         ${
           legendaryActions.length > 0
