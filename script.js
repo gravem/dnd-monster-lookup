@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const monsterInput = document.getElementById('monsterInput');
   const searchButton = document.getElementById('searchButton');
   const monsterResult = document.getElementById('monsterResult');
+  const notification = document.createElement('div');
+  notification.classList.add('notification');
+  document.body.appendChild(notification); // Notification element for user feedback
   let monsters = [];
-  // let selectedSource = '5e SRD'; // Example source. 🚧 To be selectable by user
 
   // Initialize Awesomplete
   const awesomplete = new Awesomplete(monsterInput, {
@@ -13,12 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
     tabSelect: true,
   });
 
-  // Fetching local JSON file with monster name, slug, ac and source tag.
+  // Utility function to show notifications
+  function showNotification(message, duration = 3000) {
+    notification.textContent = message;
+    notification.classList.add('notification--unhide'); // Add class with display block to unhide
+
+    setTimeout(() => {
+      notification.classList.remove('notification--unhide'); // Remove unhide class list after timer
+    }, duration);
+  }
+
+  // Fetching local JSON file with monster name, slug, ac and source tag for preloaded fuzzy search.
   async function loadMonsters() {
     try {
       const response = await fetch('public/data/monsters_summary.json');
       monsters = await response.json();
-      console.log('Monsters loaded:', monsters);
     } catch (error) {
       console.error('Error loading monsters:', error);
       monsterResult.innerHTML = 'Error loading monster list';
@@ -34,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .filter((checkbox) => checkbox.checked)
       .map((checkbox) => checkbox.value);
 
-    // If "all" is selected, ignore others
+    // If "all" is selected, ignore other sources
     if (selected.includes('all')) {
       return ['all'];
     }
@@ -60,9 +71,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
+
+    // Save selected sources and show notifications
+    saveSelectedSources();
   });
 
-  // Fuzzy search for autocomplete, with source filtering
+  // Save selected sources to local storage
+  function saveSelectedSources() {
+    const selectedSources = getSelectedSources();
+    localStorage.setItem('selectedSources', JSON.stringify(selectedSources));
+    showNotification('Master, I have saved your selected sources.');
+  }
+
+  // Load saved source on page load
+  function loadSelectedSources() {
+    const savedSources =
+      JSON.parse(localStorage.getItem('selectedSources')) || [];
+    const checkboxes = sourceFilter.querySelectorAll('input[type="checkbox"]');
+    const allCheckbox = sourceFilter.querySelector('input[value="all"]');
+
+    // Checking the boxes that match the saved sources
+    checkboxes.forEach((checkbox) => {
+      if (savedSources.includes(checkbox.value)) {
+        checkbox.checked = true;
+      }
+    });
+
+    // If specific sources are selected, uncheck 'all'
+    if (savedSources.length > 0 && !savedSources.includes('all')) {
+      allCheckbox.checked = false;
+    }
+
+    // Showing notification if sources were loaded from localStorage
+    if (savedSources.length > 0) {
+      showNotification(
+        'Welcome back master! I have applied your previous choices'
+      );
+    }
+  }
+
+  // Load and apply selected sources on DOM load
+  loadSelectedSources();
+
+  // Fuzzy search with Awesomplete for autocomplete, with source filtering
   monsterInput.addEventListener('input', () => {
     const selectedSources = getSelectedSources();
 
@@ -83,11 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
       value: result.item.name, // Use only the name for selection
     }));
 
-    // Populate Awesomplete with formatted suggestions
     awesomplete.list = results;
+
+    // Use Awesomplete’s built-in function to replace the input value with the actual name
+    awesomplete.replace = function (suggestion) {
+      // Set the monster input value to the suggestion value (name only)
+      monsterInput.value = suggestion.value;
+    };
   });
 
-  // Utility function to uncheck all checkboxes except 'all'
+  // Clear all checkboxes except 'all' when uncheckAllBtn is clicked
   uncheckAllBtn.addEventListener('click', () => {
     const checkboxes = sourceFilter.querySelectorAll('input[type="checkbox"');
     checkboxes.forEach((checkbox) => {
@@ -97,6 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Recheck 'all'
     const allCheckbox = sourceFilter.querySelector('input[value="all"]');
     allCheckbox.checked = true;
+
+    saveSelectedSources();
+    showNotification('All filters banished, Master!');
 
     // Reset the autocomplete and search
     monsterInput.value = '';
