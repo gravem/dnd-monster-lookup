@@ -237,12 +237,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render detailed monster data
   function renderMonsterDetails(monsterData) {
+    console.log(monsterData);
     const armorClass = `${monsterData.armor_class} (${monsterData.armor_desc || 'natural armor'})`;
     const imageUrl = monsterData.img_main ? monsterData.img_main : '';
     const actions = monsterData.actions || [];
     const legendaryActions = monsterData.legendary_actions || [];
     const specialAbilities = monsterData.special_abilities || [];
     const spellList = monsterData.spell_list || [];
+    const description = monsterData.desc || [];
 
     const statBlockHtml = `
       <div class="monster-stat-block">
@@ -255,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p><strong>Hit Points:</strong> ${monsterData.hit_points} (${monsterData.hit_dice})</p>
         <p><strong>Speed:</strong> ${monsterData.speed.walk || '0'} ft${monsterData.speed.fly ? `, fly ${monsterData.speed.fly} ft` : ''}${monsterData.speed.swim ? `, swim ${monsterData.speed.swim} ft` : ''}</p>
         <p><strong>Challenge Rating:</strong> ${monsterData.challenge_rating}</p>
+        ${monsterData.desc ? `<p><strong>Description:</strong> ${description}</p>` : ''}
 
         <div class="monster-abilities">
           <h3>Abilities</h3>
@@ -272,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   .join(', ')}</p>`
               : ''
           }
-          ${monsterData.senses ? `<p><strong>Senses:</strong> ${monsterData.senses}</p>` : ''}
+          ${monsterData.senses ? `<p><strong>Senses:</strong> ${monsterData.senses}</p>` : 'No description'}
           ${monsterData.languages ? `<p><strong>Languages:</strong> ${monsterData.languages}</p>` : ''}
         </div>
 
