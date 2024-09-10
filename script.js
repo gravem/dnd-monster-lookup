@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const closeDivButton = document.querySelector('.collapse-div-btn');
+  const sourceFilterDiv = document.querySelector('#sourceFilter');
   const monsterInput = document.getElementById('monsterInput');
   const searchButton = document.getElementById('searchButton');
   const monsterResult = document.getElementById('monsterResult');
@@ -338,4 +340,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function showLoading(monsterName) {
     monsterResult.innerHTML = `<p>Chasing down ${monsterName}...</p>`;
   }
+  // Script for collapsing sources
+  closeDivButton.addEventListener('click', () => {
+    sourceFilterDiv.classList.toggle('revealed');
+
+    if (sourceFilterDiv.classList.contains('revealed')) {
+      closeDivButton.textContent = 'Hide the monster sources';
+    } else {
+      closeDivButton.textContent = 'Show the monster sources';
+    }
+  });
 });
