@@ -19,6 +19,10 @@
     <!-- Stylesheets and fonts -->
     <link
       rel="stylesheet"
+      href="reset.css"
+    />
+    <link
+      rel="stylesheet"
       href="style.css"
     />
     <link
@@ -33,10 +37,6 @@
       rel="preconnect"
       href="https://fonts.gstatic.com"
       crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jim+Nightshade&display=swap"
-      rel="stylesheet"
     />
     <!-- Favicon -->
     <link
@@ -127,98 +127,109 @@
   </head>
   <body>
     <div class="container">
-      <h1>Monster search</h1>
-      <button id="uncheckAllBtn">Uncheck All</button>
-      <div id="sourceFilter">
-        <label>
-          <input
-            type="checkbox"
-            value="all"
-            checked
-          />
-          All Sources
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="5e-srd"
-          />
-          5e SRD
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="homebrew"
-          />
-          Homebrew
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="tob"
-          />
-          Tome of Beasts
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="tob2"
-          />
-          Tome of Beasts 2
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="tob3"
-          />
-          Tome of Beasts 3
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="tob-2023"
-          />
-          Tome of Beasts 2023
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="cc"
-          />
-          Creature Codex
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="menagerie"
-          />
-          Menagerie
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="wotc-srd"
-          />
-          WotC SRD
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="blackflag"
-          />
-          Blackflag
-        </label>
+      <h1 class="title">Stone of monsters</h1>
+      <button
+        type="button"
+        class="collapse-div-btn"
+      >
+        Reveal monster sources
+      </button>
+      <div
+        id="sourceFilter"
+        class="source-filters"
+      >
+        <div class="checkboxes">
+          <label>
+            <input
+              class="check-gem"
+              type="checkbox"
+              value="all"
+              checked
+            />
+            All Sources
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="wotc-srd"
+            />
+            5e Core Rules (wotc-srd)
+          </label>
+          <h3>Kobold Press™</h3>
+          <label>
+            <input
+              type="checkbox"
+              value="tob"
+            />
+            Tome of Beasts
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="tob2"
+            />
+            Tome of Beasts 2
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="tob3"
+            />
+            Tome of Beasts 3
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="tob-2023"
+            />
+            Tome of Beasts 2023
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="cc"
+            />
+            Creature Codex
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="menagerie"
+            />
+            Menagerie
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="blackflag"
+            />
+            Blackflag
+          </label>
+        </div>
+        <button
+          id="uncheckAllBtn"
+          class="source-filter-btn"
+        >
+          Reset filters
+        </button>
       </div>
-      <input
-        type="text"
-        id="monsterInput"
-        class="awesomplete"
-        placeholder="What monster?"
-      />
-      <button id="searchButton">Fetch monster</button>
+      <div class="monster-search-container">
+        <input
+          type="text"
+          id="monsterInput"
+          class="awesomplete monster-input"
+          placeholder="Search for a monster"
+        />
+        <button
+          id="searchButton"
+          class="gem-button"
+        >
+          Fetch monster
+        </button>
+      </div>
       <div
         id="monsterResult"
-        class="monster-result"
+        class="monster-result magical-output"
       ></div>
     </div>
   </body>

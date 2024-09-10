@@ -1,149 +1,206 @@
-/* Css reset */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Styling */
-
-.jim-nightshade-regular {
-  font-family: 'Jim Nightshade', cursive;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 2rem;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(255, 228, 192);
-  padding: 0;
+  background: linear-gradient(#222, #111);
+  height: 100svh;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: #f0e6d6;
   display: flex;
   justify-content: center;
-  max-height: 100svh;
-}
-
-ul {
-  list-style: none;
-  text-align: left;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .container {
-  background-color: #f1dabb;
-  border-radius: 1rem;
-  padding: 4rem;
+  /* width: 100%; */
+  padding: 3rem;
+  border-radius: 2rem;
+  background-color: #000;
+  /* background-image: url(/img/200-100-5-monochrome.png); */
+  background: linear-gradient(#222, #111);
   box-shadow:
-    10px 10px 10px rgba(59, 23, 23, 0.2),
-    inset 1px 1px 1px #fff,
-    inset -1px -1px 1px #662f2f;
-  width: 28rem;
-  margin-top: 4rem;
-}
-
-h1 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight: 900;
-  font-size: 2.49rem;
-  color: #e9d1b3;
-  text-shadow:
-    0 1px 0.5px #fff,
-    0 -1px 0.5px #852323;
-}
-
-#monsterInput {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  text-decoration: underline 3px rgb(99, 20, 6);
-  background: none;
-}
-
-#monsterInput:focus {
-  outline: solid 0px white;
-}
-
-#searchButton {
-  background-color: #e9d1b3;
-  color: white;
+    0rem 0rem 5rem 1rem #ffffff22,
+    0rem 0rem 1rem -0.3rem #ffffff22,
+    inset 0rem 1rem 2rem #000,
+    inset 0rem -0.2rem 1rem #ffffff44;
   border: none;
-  border-radius: 4px;
-  padding: 8px 12px;
-  cursor: pointer;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sheen over box */
+.container::before {
+  content: '';
+  background: white;
+  opacity: 3%;
+  height: 100rem;
+  width: 100rem;
+  position: absolute;
+  top: -50rem;
+  left: -80rem;
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+/* Glassy highlight on top */
+.container::after {
+  content: '';
+  width: 98%;
+  height: 3rem;
+  border-radius: 2rem;
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  translate: -50% 0;
+  background: linear-gradient(#ffffff66, #ffffff00 50%);
+}
+
+.title {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin: 0 0 2rem 0;
+  color: #f0e6d6;
+  text-shadow:
+    0 0.08rem 0.05rem #000,
+    0 -0.05rem 0.05rem #f9f9f9;
+}
+
+/* Source filters */
+.collapse-div-btn {
+  width: 100%;
+  height: 2rem;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  color: #f9f9f9;
+  background: #444;
   display: flex;
-  margin: auto;
-  transition: all 0.3s ease-in-out;
-  box-shadow:
-    1px 1px 2px rgba(59, 23, 23, 0.2),
-    inset 1px 1px 1px #fff,
-    inset -1px -1px 1px #662f2f;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
 }
 
-#searchButton:hover {
-  transition: all 0.3s ease-in-out;
-  box-shadow:
-    5px 5px 10px rgba(59, 23, 23, 0.2),
-    inset 1px 1px 1px #fff,
-    inset -1px -1px 1px #662f2f;
+.collapse-div-btn::after {
+  content: '▼';
+  /* ◀▲▼▶ */
 }
 
-#searchButton:focus {
-  outline: 0px solid rgb(0, 0, 0);
-  transition: all 0.3s ease-in-out;
-  box-shadow:
-    5px 5px 10px rgba(59, 23, 23, 0.2),
-    inset 1px 1px 1px #fff,
-    inset -1px -1px 1px #662f2f;
+.source-filters {
+  max-height: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: inset 0 0px 4px #444;
+  position: relative;
+  top: -2rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.checkboxes {
+  margin: 2.5rem 3rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
 }
 
-#searchButton:active {
-  outline: 0px solid rgb(0, 0, 0);
-  transition: all 0.1s;
-  box-shadow:
-    1px 1px 2px rgba(59, 23, 23, 0.2),
-    inset 1px 1px 1px #fff,
-    inset -1px -1px 1px #662f2f;
+.source-filter-btn {
+  /* padding: 0.5rem 1rem; */
+  border-radius: 1rem;
+  width: 100%;
+  height: 2rem;
+  border: none;
+  color: #f9f9f9;
+  background: #444;
 }
 
+.hidden {
+  display: none;
+}
+
+.revealed {
+  max-height: 28rem;
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Search box and button */
+.monster-search-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.monster-input {
+  padding: 1rem 1.5rem;
+  box-shadow:
+    inset 2px 2px 4px #111,
+    inset -2px -2px 4px #666;
+  background: none;
+  border: none;
+  border-radius: 50px;
+  color: #f0e6d6;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.gem-button {
+  height: 3rem;
+  padding: 10px 20px;
+  margin: 0 0 2rem 0;
+  color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  border: solid 1px #1d1d1d;
+  background: #852323;
+  box-shadow:
+    0 4px 3px 1px #3a2b2b,
+    0 8px 8px #1a1a1a,
+    0 -4px 4px #2c1e1e,
+    0 -6px 4px #444444,
+    inset 0rem 1rem 2rem #270000,
+    inset 0rem -0.2rem 1rem #ff8080;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gem-button::after {
+  content: '';
+  width: 96%;
+  height: 2rem;
+  border-radius: 1rem;
+  background: linear-gradient(#ffffff66, #ffffff00 50%);
+  position: absolute;
+  top: 0px;
+  left: 2%;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gem-button:hover {
+  background: #b81f1f;
+  box-shadow:
+    0 4px 3px 1px #5a3434,
+    0 8px 8px #1a1a1a,
+    0 -4px 4px #492e2e,
+    0 -6px 4px #444444,
+    0 0 20px 6px #5a3434,
+    inset 0rem 1rem 2rem #270000,
+    inset 0rem -0.2rem 1rem #ff8080;
+}
+
+.gem-button:active {
+  background: #f13b3b;
+  box-shadow:
+    0 4px 3px 1px #5a3434,
+    0 8px 8px #1a1a1a,
+    0 -4px 4px #492e2e,
+    0 -6px 4px #444444,
+    0 0 20px 6px #5a344f,
+    inset 0rem 1rem 2rem #270000,
+    inset 0rem -0.2rem 1rem #ff8080;
+}
+
+.gem-button:active::after {
+  height: 2.5rem;
+}
+
+/* RESULT */
 .monster-result {
-  margin-top: 20px;
-  padding: 10px;
   border-radius: 4px;
   text-align: left;
 }
@@ -154,60 +211,15 @@ h1 {
   max-height: 300px; /* Adjust this value as needed */
 }
 
-/* Awesomplete styling */
-.awesomplete {
-  border-radius: 4px;
-  max-height: 100vh;
-  overflow-y: auto;
-  z-index: 10;
-  border: none;
-}
-
-/* .awesomplete input {
-
-} */
-
-.awesomplete ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  z-index: 100;
-  background-color: white;
-  color: #696969;
-  font-size: 1rem;
-  line-height: 1rem;
-  width: 15rem;
-  margin: auto;
-  max-height: 70svh;
-  overflow: hidden;
-}
-
-.awesomplete li {
-  padding: 8px;
-  cursor: pointer;
-}
-
-.awesomplete li:hover,
-.awesomplete li[aria-selected='true'] {
-  background-color: #ddd;
-}
-
-.awesomplete li .tag {
-  background-color: #852323;
-  font-weight: 900;
-}
-
-.awesomplete .visually-hidden {
-  display: none;
-}
+/* MONSTER STAT BLOCK */
 
 .monster-stat-block {
-  border: 1px solid #444;
   padding: 16px;
-  background-color: #f9f9f9;
   max-width: 600px;
   margin: 20px auto;
+  box-shadow:
+    inset 2px 2px 4px #111,
+    inset -2px -2px 4px #666;
 }
 
 .monster-name {
@@ -227,31 +239,6 @@ h1 {
 .monster-legendary-actions,
 .monster-spells {
   margin-top: 20px;
-}
-
-h3 {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-  font-size: 18px;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-ul li {
-  margin-bottom: 10px;
-}
-
-.monster-spells p {
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-p {
-  font-size: 16px;
-  margin: 5px 0;
 }
 
 .spell-stat-block {
@@ -276,8 +263,8 @@ p {
 
 /* Style for the notification */
 .notification {
-  background-color: #dbffdb;
-  color: #000;
+  background-color: #dbffdb54;
+  color: #ffffff;
   padding: 10px;
   border-radius: 5px;
   position: fixed;
