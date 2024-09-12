@@ -4,9 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx serve public",
-    "vercel-build": "npx serve public",
-    "build": "echo 'No build step necessary for static site'"
+    "start": "npx serve public"
   },
   "keywords": [],
   "author": "",
