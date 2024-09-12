@@ -278,32 +278,32 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="ability">
               <p>STR</p>
               <p class="ability-score">${monsterData.strength}</p>
-              <p class="ability-mod">+${Math.floor((monsterData.strength - 10) / 2)}</p>
+              <p class="ability-mod">${Math.floor((monsterData.strength - 10) / 2)}</p>
             </div>
             <div class="ability">
               <p>DEX</p>
               <p class="ability-score">${monsterData.dexterity}</p>
-              <p class="ability-mod">+${Math.floor((monsterData.dexterity - 10) / 2)}</p>
+              <p class="ability-mod">${Math.floor((monsterData.dexterity - 10) / 2)}</p>
             </div>
             <div class="ability">
               <p>CON</p>
               <p class="ability-score">${monsterData.constitution}</p>
-              <p class="ability-mod">+${Math.floor((monsterData.constitution - 10) / 2)}</p>
+              <p class="ability-mod">${Math.floor((monsterData.constitution - 10) / 2)}</p>
             </div>
             <div class="ability">
               <p>INT</p>
               <p class="ability-score">${monsterData.intelligence}</p>
-              <p class="ability-mod">+${Math.floor((monsterData.intelligence - 10) / 2)}</p>
+              <p class="ability-mod">${Math.floor((monsterData.intelligence - 10) / 2)}</p>
             </div>
             <div class="ability">
               <p>WIS</p>
               <p class="ability-score">${monsterData.wisdom}</p>
-              <p class="ability-mod">+${Math.floor((monsterData.wisdom - 10) / 2)}</p>
+              <p class="ability-mod">${Math.floor((monsterData.wisdom - 10) / 2)}</p>
             </div>
             <div class="ability">
               <p>CHA</p>
               <p class="ability-score">${monsterData.charisma}</p>
-              <p class="ability-mod">+${Math.floor((monsterData.charisma - 10) / 2)}</p>
+              <p class="ability-mod">${Math.floor((monsterData.charisma - 10) / 2)}</p>
             </div>
           </div>
         </div>
