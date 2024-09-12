@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fetching local JSON file with monster name, slug, ac and source tag for preloaded fuzzy search.
   async function loadMonsters() {
     try {
-      const response = await fetch('public/data/monsters_summary.json');
+      const response = await fetch('data/monsters_summary.json');
       monsters = await response.json();
     } catch (error) {
       console.error('Error loading monsters:', error);
