@@ -12,15 +12,15 @@ body {
 
 .bg {
   background: linear-gradient(#222, #111);
-  height: 100svh;
+  height: 110vh;
   width: 100%;
   position: fixed;
 }
 
 .container {
-  min-height: 90svh;
-  max-width: 450px;
-  padding: 3rem;
+  min-height: 90vh;
+  width: 500px;
+  padding: 2rem;
   border-radius: 2rem;
   background-color: #000;
   background: linear-gradient(#222, #111);
@@ -56,7 +56,7 @@ body {
 /* Glassy highlight on top */
 .container::after {
   content: '';
-  width: 98%;
+  width: 96%;
   height: 3rem;
   border-radius: 2rem;
   position: absolute;
@@ -66,18 +66,31 @@ body {
   background: linear-gradient(#ffffff66, #ffffff00 50%);
 }
 
+@media (max-width: 500px) {
+  body {
+    font-size: 0.875rem;
+  }
+  .container {
+    padding: 2rem 1.5rem;
+    margin: 0rem;
+    width: 100%;
+  }
+}
+
 .title {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  text-align: center;
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.1rem;
   margin: 0 0 2rem 0;
-  color: #971a1ab6;
+  color: #f0e6d6;
   text-shadow:
-    0 -0.08rem 0.05rem #000000c5,
-    0 0.04rem 0.05rem #f9f9f9ab,
-    0 0.1rem 0.2rem #b81f1f,
-    0 0rem 2rem #c22323;
+    0 0.1rem 0rem #b81f1f,
+    0 0.15rem 0rem #b81f1f,
+    0 0.2rem 0rem #b81f1f,
+    0 0.25rem 0rem #b81f1f,
+    0 0.35rem 0.4rem #000000;
 }
 
 /* Source filters */
@@ -248,8 +261,10 @@ body {
 
 /* RESULT */
 .monster-result {
-  border-radius: 4px;
-  text-align: left;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  /* overflow-x: auto;
+  word-wrap: break-word; */
 }
 
 .monster-image {
@@ -299,8 +314,9 @@ h3 {
 
 .monster-name {
   text-align: center;
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 0.2rem 0rem #b81f1f;
 }
 
 .monster-image {
@@ -320,7 +336,7 @@ h3 {
 
 .monster-stat-block h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
