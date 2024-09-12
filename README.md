@@ -49,8 +49,6 @@ GitHub: Gravem
 **Axios:** For fetching the monster data from external APIs
 **Fonts:** A mix of elegant and fantasy-themed fonts to create an immersive experience
 **Monsters:** Sourced from the Open5e API, utilizing content from the SRD and various homebrew sources
-**App Icon:**
-Dragon by Fabian Design from [Noun Project](https://thenounproject.com/browse/icons/term/dragon/) (CC BY 3.0)
 
 ---
 
