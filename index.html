@@ -128,110 +128,121 @@
   <body>
     <div class="bg"></div>
     <div class="container">
-      <h1 class="title">Stone of monsters</h1>
-      <button
-        type="button"
-        class="collapse-div-btn"
-      >
-        Reveal monster sources
-      </button>
-      <div
-        id="sourceFilter"
-        class="source-filters"
-      >
-        <div class="checkboxes">
-          <label>
-            <input
-              class="check-gem"
-              type="checkbox"
-              value="all"
-              checked
-            />
-            All Sources
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="wotc-srd"
-            />
-            5e Core Rules (wotc-srd)
-          </label>
-          <h3>Kobold Press™</h3>
-          <label>
-            <input
-              type="checkbox"
-              value="tob"
-            />
-            Tome of Beasts
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="tob2"
-            />
-            Tome of Beasts 2
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="tob3"
-            />
-            Tome of Beasts 3
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="tob-2023"
-            />
-            Tome of Beasts 2023
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="cc"
-            />
-            Creature Codex
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="menagerie"
-            />
-            Menagerie
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="blackflag"
-            />
-            Blackflag
-          </label>
+      <div class="top-div">
+        <h1 class="title">Stone of monsters</h1>
+        <button
+          type="button"
+          class="collapse-div-btn"
+        >
+          Reveal monster sources
+        </button>
+        <div
+          id="sourceFilter"
+          class="source-filters"
+        >
+          <div class="checkboxes">
+            <label>
+              <input
+                class="check-gem"
+                type="checkbox"
+                value="all"
+                checked
+              />
+              All Sources
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="wotc-srd"
+              />
+              5e Core Rules (wotc-srd)
+            </label>
+            <h3>Kobold Press™</h3>
+            <label>
+              <input
+                type="checkbox"
+                value="tob"
+              />
+              Tome of Beasts
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="tob2"
+              />
+              Tome of Beasts 2
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="tob3"
+              />
+              Tome of Beasts 3
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="tob-2023"
+              />
+              Tome of Beasts 2023
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="cc"
+              />
+              Creature Codex
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="menagerie"
+              />
+              Menagerie
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="blackflag"
+              />
+              Blackflag
+            </label>
+          </div>
+          <button
+            id="uncheckAllBtn"
+            class="source-filter-btn"
+          >
+            Reset filters
+          </button>
         </div>
-        <button
-          id="uncheckAllBtn"
-          class="source-filter-btn"
-        >
-          Reset filters
-        </button>
+        <div class="monster-search-container">
+          <input
+            type="text"
+            id="monsterInput"
+            class="awesomplete monster-input"
+            placeholder="Search for a monster"
+          />
+          <button
+            id="searchButton"
+            class="gem-button"
+          >
+            Fetch monster
+          </button>
+        </div>
+        <div
+          id="monsterResult"
+          class="monster-result magical-output"
+        ></div>
       </div>
-      <div class="monster-search-container">
-        <input
-          type="text"
-          id="monsterInput"
-          class="awesomplete monster-input"
-          placeholder="Search for a monster"
-        />
-        <button
-          id="searchButton"
-          class="gem-button"
-        >
-          Fetch monster
-        </button>
+      <div class="bottom-div">
+        <p class="cryptic-rune">
+          <a
+            href="https://buymeacoffee.com/gravem"
+            alt="Spare a coffee for the monster hunter?"
+            >※</a
+          >
+        </p>
       </div>
-      <div
-        id="monsterResult"
-        class="monster-result magical-output"
-      ></div>
     </div>
   </body>
 </html>

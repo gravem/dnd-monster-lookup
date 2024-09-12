@@ -235,34 +235,77 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('spellResult').innerHTML = spellBlock;
   }
 
+  // Function for replacing Markdown with HTML
+  function formatMarkdownToHtml(text) {
+    if (!text) return '';
+    // Bold: Replace ** with <strong>
+    text = text.replaceAll(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // italics: Replace _ with <em>
+    text = text.replaceAll(/_(.*?)_/g, '<em>$1</em>');
+    // Line break: Replace \n with <br> or dividing into paragraphs
+    text = text.replaceAll(/\n/g, '</p><p>');
+
+    return text;
+  }
+
   // Render detailed monster data
   function renderMonsterDetails(monsterData) {
     console.log(monsterData);
-    const armorClass = `${monsterData.armor_class} (${monsterData.armor_desc || 'natural armor'})`;
+    const armorClass = `${monsterData.armor_class} (${formatMarkdownToHtml(monsterData.armor_desc) || 'natural armor'})`;
     const imageUrl = monsterData.img_main ? monsterData.img_main : '';
     const actions = monsterData.actions || [];
     const legendaryActions = monsterData.legendary_actions || [];
     const specialAbilities = monsterData.special_abilities || [];
     const spellList = monsterData.spell_list || [];
-    const description = monsterData.desc || [];
+    const description = formatMarkdownToHtml(monsterData.desc) || [];
 
     const statBlockHtml = `
       <div class="monster-stat-block">
-        <h2 class="monster-name">${monsterData.name}</h2>
-        ${imageUrl ? `<img src="${imageUrl}" alt="${monsterData.name}" class="monster-image">` : ''}
-
-        <p><strong>Source:</strong> ${monsterData.document__slug}</p>
-        <p><strong>Type:</strong> ${monsterData.size} ${monsterData.type}, ${monsterData.alignment}</p>
-        <p><strong>Armor Class:</strong> ${armorClass}</p>
-        <p><strong>Hit Points:</strong> ${monsterData.hit_points} (${monsterData.hit_dice})</p>
-        <p><strong>Speed:</strong> ${monsterData.speed.walk || '0'} ft${monsterData.speed.fly ? `, fly ${monsterData.speed.fly} ft` : ''}${monsterData.speed.swim ? `, swim ${monsterData.speed.swim} ft` : ''}</p>
-        <p><strong>Challenge Rating:</strong> ${monsterData.challenge_rating}</p>
-        ${monsterData.desc ? `<p><strong>Description:</strong> ${description}</p>` : ''}
+          <h2 class="monster-name">${monsterData.name}</h2>
+          <p>${monsterData.size} ${monsterData.type}, ${monsterData.alignment}</p>
+          ${imageUrl ? `<img src="${imageUrl}" alt="${monsterData.name}" class="monster-image">` : ''}
+          <div class="monster-basic-info">
+          <!-- <p><strong>Source:</strong> ${monsterData.document__slug}</p> -->
+          <p><strong>Armor Class:</strong> ${armorClass}</p>
+          <p><strong>Hit Points:</strong> ${monsterData.hit_points} (${monsterData.hit_dice})</p>
+          <p><strong>Speed:</strong> ${monsterData.speed.walk || '0'} ft${monsterData.speed.fly ? `, fly ${monsterData.speed.fly} ft` : ''}${monsterData.speed.swim ? `, swim ${monsterData.speed.swim} ft` : ''}</p>
+          <p><strong>Challenge Rating:</strong> ${monsterData.challenge_rating}</p>
+        </div>
 
         <div class="monster-abilities">
           <h3>Abilities</h3>
-          <p><strong>STR:</strong> ${monsterData.strength}, <strong>DEX:</strong> ${monsterData.dexterity}, <strong>CON:</strong> ${monsterData.constitution}</p>
-          <p><strong>INT:</strong> ${monsterData.intelligence}, <strong>WIS:</strong> ${monsterData.wisdom}, <strong>CHA:</strong> ${monsterData.charisma}</p>
+          <div class="ability-table">
+            <div class="ability">
+              <p>STR</p>
+              <p class="ability-score">${monsterData.strength}</p>
+              <p class="ability-mod">+${Math.floor((monsterData.strength - 10) / 2)}</p>
+            </div>
+            <div class="ability">
+              <p>DEX</p>
+              <p class="ability-score">${monsterData.dexterity}</p>
+              <p class="ability-mod">+${Math.floor((monsterData.dexterity - 10) / 2)}</p>
+            </div>
+            <div class="ability">
+              <p>CON</p>
+              <p class="ability-score">${monsterData.constitution}</p>
+              <p class="ability-mod">+${Math.floor((monsterData.constitution - 10) / 2)}</p>
+            </div>
+            <div class="ability">
+              <p>INT</p>
+              <p class="ability-score">${monsterData.intelligence}</p>
+              <p class="ability-mod">+${Math.floor((monsterData.intelligence - 10) / 2)}</p>
+            </div>
+            <div class="ability">
+              <p>WIS</p>
+              <p class="ability-score">${monsterData.wisdom}</p>
+              <p class="ability-mod">+${Math.floor((monsterData.wisdom - 10) / 2)}</p>
+            </div>
+            <div class="ability">
+              <p>CHA</p>
+              <p class="ability-score">${monsterData.charisma}</p>
+              <p class="ability-mod">+${Math.floor((monsterData.charisma - 10) / 2)}</p>
+            </div>
+          </div>
         </div>
 
         <div class="monster-skills">
@@ -292,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="monster-special-abilities">
             <h3>Special Abilities</h3>
             <ul>
-              ${specialAbilities.map((ability) => `<li><strong>${ability.name}:</strong> ${ability.desc}</li>`).join('')}
+              ${specialAbilities.map((ability) => `<li><strong>${ability.name}:</strong> ${formatMarkdownToHtml(ability.desc)}</li>`).join('')}
             </ul>
           </div>
           `
@@ -302,28 +345,38 @@ document.addEventListener('DOMContentLoaded', () => {
         ${
           legendaryActions.length > 0
             ? `
-        <div class="monster-legendary-actions">
-          <h3>Legendary Actions</h3>
-          <ul>
-            ${legendaryActions.map((action) => `<li><strong>${action.name}:</strong> ${action.desc}</li>`).join('')}
-          </ul>
-        </div>`
+              <div class="monster-legendary-actions">
+                <h3>Legendary Actions</h3>
+                <ul>
+                  ${legendaryActions.map((action) => `<li><strong>${action.name}:</strong> ${action.desc}</li>`).join('')}
+                </ul>
+              </div>`
             : ''
         }
 
         ${
           spellList.length > 0
             ? `
-        <div class="spell-list">
-          <h3>Spells</h3>
-          ${spellList
-            .map(
-              (spellUrl) =>
-                `<button class="spell-btn" data-spell-url="${spellUrl}">${spellUrl.split('/spells/')[1].replaceAll('-', ' ').replace('/', '')}</button>`
-            )
-            .join('')}
-        </div>
-        <div id="spellResult"></div>`
+            <h3>Spells</h3>
+              <div class="spell-list">
+                ${spellList
+                  .map(
+                    (spellUrl) =>
+                      `<button class="spell-btn" data-spell-url="${spellUrl}">${spellUrl.split('/spells/')[1].replaceAll('-', ' ').replace('/', '')}</button>`
+                  )
+                  .join('')}
+              </div>
+              <div id="spellResult"></div>`
+            : ''
+        }
+
+        ${
+          monsterData.desc
+            ? `
+            <div class="monster-basic-info">
+              <h3>Description</h3>
+              <p>${formatMarkdownToHtml(description)}</p>
+            </div>`
             : ''
         }
       </div>
