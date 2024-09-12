@@ -271,11 +271,30 @@ body {
     inset -2px -2px 4px #666;
 }
 
+h3 {
+  font-size: 1.2rem;
+  color: #f0e6d6;
+  text-shadow: 0 0.1rem 0.1rem #b81f1f;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.monster-stat-block ul {
+  padding: 0;
+  list-style: none;
+}
+
+.monster-actions li,
+.monster-abilities li,
+.monster-special-abilities li {
+  margin-bottom: 0.5rem;
+}
+
 .monster-basic-info p,
 .monster-abilities p,
+.monster-special-abilities p,
 .monster-skills p,
 .monster-actions p {
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .monster-name {
@@ -292,10 +311,11 @@ body {
 
 .monster-basic-info,
 .monster-abilities,
+.monster-special-abilities,
 .monster-actions,
 .monster-legendary-actions,
 .monster-spells {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .monster-stat-block h3 {
@@ -332,13 +352,6 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-h3 {
-  font-size: 1.2rem;
-  color: #f0e6d6;
-  text-shadow: 0 0.1rem 0.1rem #b81f1f;
-  margin: 1rem 0 0.5rem 0;
 }
 
 /* Style for the notification */

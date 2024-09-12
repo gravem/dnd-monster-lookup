@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(notification); // Notification element for user feedback
   let monsters = [];
 
+  // Load the cashed list of monsters
+  loadMonsters();
+  // Load and apply selected monster sources
+  loadSelectedSources();
+
   // Initialize Awesomplete
   const awesomplete = new Awesomplete(monsterInput, {
     minChars: 0,
@@ -37,8 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
       monsterResult.innerHTML = 'Error loading monster list';
     }
   }
-
-  loadMonsters();
 
   // Utility function to get selected sources from checkboxes
   function getSelectedSources() {
@@ -111,9 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
   }
-
-  // Load and apply selected sources on DOM load
-  loadSelectedSources();
 
   // Fuzzy search with Awesomplete for autocomplete, with source filtering
   monsterInput.addEventListener('input', () => {
