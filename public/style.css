@@ -169,11 +169,9 @@ body {
   text-align: center;
   font-size: 3rem;
   text-decoration: none;
-  color: #111;
+  color: #b81f1f66;
   font-weight: 400;
-  text-shadow:
-    0px -1px 1px #505050,
-    0px 1px 1px #111;
+  text-shadow: 0px 1px 1px #111;
 }
 
 /* Search box and button */
@@ -283,11 +281,20 @@ body {
     inset -2px -2px 4px #666;
 }
 
+h2,
 h3 {
   font-size: 1.2rem;
+  font-weight: bold;
   color: #f0e6d6;
   text-shadow: 0 0.1rem 0.1rem #b81f1f;
   margin: 1rem 0 0.5rem 0;
+}
+
+hr {
+  border: solid 1px #b81f1f00;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #b81f1f, transparent);
+  margin-bottom: 1rem;
 }
 
 .monster-stat-block ul {
@@ -334,7 +341,6 @@ h3 {
 .monster-stat-block h3 {
   margin: 0;
   font-size: 1rem;
-  font-weight: bold;
 }
 
 /* Ability block */
