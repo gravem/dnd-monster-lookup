@@ -258,6 +258,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const specialAbilities = monsterData.special_abilities || [];
     const spellList = monsterData.spell_list || [];
     const description = formatMarkdownToHtml(monsterData.desc) || [];
+    const dndBeyondSearch =
+      monsterData.document__slug === 'wotc-srd'
+        ? `<a href="https://www.dndbeyond.com/search?q=${monsterData.name}">Search for ${monsterData.name} on D&D Beyond</a>`
+        : '';
+    const source = monsterData.document__title;
+    const pageNumber = monsterData.page_no ? monsterData.page_no : '';
 
     const statBlockHtml = `
       <div class="monster-stat-block">
@@ -376,6 +382,18 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="monster-basic-info">
               <h3>Description</h3>
               <p>${formatMarkdownToHtml(description)}</p>
+            </div>`
+            : ''
+        }
+
+        ${
+          monsterData.document__title
+            ? `
+            <hr>
+            <div class="monster-basic-info">
+              <h3>Source</h3>
+              <p>${source + ', page nr. ' + pageNumber}</p>
+              <p>${dndBeyondSearch}</p>
             </div>`
             : ''
         }
