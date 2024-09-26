@@ -15,8 +15,8 @@ Welcome to **A Single Monster Lookup**, a simple, fantasy-inspired app designed 
 Feel free to request additional features or improvements if you find this app useful! Planned updates include:
 
 - **Advanced Filtering:** Filter monsters based on specific criteria like challenge rating or type.
-- **Spell Lookups:** Add an integrated spell search function to get more information on spells used by the monsters.
-- **Dark Mode:** A mystical dark theme for those who prefer darker aesthetics.
+- ~~**Spell Lookups:** Add an integrated spell search function to get more information on spells used by the monsters.~~
+- **Light mode:** A lighter clean mode for those who find this obsidian look a bit too angsty.
 
 ## Usage
 
