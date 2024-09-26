@@ -227,7 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function displaySpellDetails(spellData) {
     const spellBlock = `
     <div class="spell-stat-block">
-      <h3>${spellData.name}</h3>
+      <h3 class="spell-name">${spellData.name}</h3>
+      <hr/>
       <p><strong>School:</strong> ${spellData.school.name}</p>
       <p><strong>Description:</strong> ${spellData.desc}</p>
     </div>
@@ -280,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="monster-abilities">
           <h3>Abilities</h3>
+          <hr/>
           <div class="ability-table">
             <div class="ability">
               <p>STR</p>
@@ -330,6 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="monster-actions">
           <h3>Actions</h3>
+          <hr/>
           <ul>
             ${actions.map((action) => `<li><strong>${action.name}:</strong> ${action.desc}</li>`).join('')}
           </ul>
@@ -340,6 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ? `
           <div class="monster-special-abilities">
             <h3>Special Abilities</h3>
+            <hr/>
             <ul>
               ${specialAbilities.map((ability) => `<li><strong>${ability.name}:</strong> ${formatMarkdownToHtml(ability.desc)}</li>`).join('')}
             </ul>
@@ -364,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
           spellList.length > 0
             ? `
             <h3>Spells</h3>
+            <hr/>
               <div class="spell-list">
                 ${spellList
                   .map(
@@ -381,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ? `
             <div class="monster-basic-info">
               <h3>Description</h3>
+              <hr/>
               <p>${formatMarkdownToHtml(description)}</p>
             </div>`
             : ''
@@ -389,9 +395,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ${
           monsterData.document__title
             ? `
-            <hr>
             <div class="monster-basic-info">
               <h3>Source</h3>
+              <hr>
               <p>${source + ', page nr. ' + pageNumber}</p>
               <p>${dndBeyondSearch}</p>
             </div>`
