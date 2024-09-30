@@ -1,249 +1,131 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1"
-    />
-    <title>Find a monster</title>
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
-    <script
-      src="awesomplete.js"
-      async
-    ></script>
-    <script src="script.js"></script>
-    <!-- Stylesheets and fonts -->
-    <link
-      rel="stylesheet"
-      href="reset.css"
-    />
-    <link
-      rel="stylesheet"
-      href="style.css"
-    />
-    <link
-      rel="stylesheet"
-      href="awesomplete.css"
-    />
-    <!-- Google font -->
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <!-- Favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="favicons/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="favicons/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="favicons/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="favicons/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="favicons/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="favicons/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="favicons/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="favicons/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="favicons/apple-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="favicons/android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="favicons/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="favicons/favicon-16x16.png"
-    />
-    <link
-      rel="manifest"
-      href="favicons/manifest.json"
-    />
-    <meta
-      name="msapplication-TileColor"
-      content="#111"
-    />
-    <meta
-      name="msapplication-TileImage"
-      content="favicons/ms-icon-144x144.png"
-    />
-    <meta
-      name="theme-color"
-      content="#111"
-    />
-  </head>
-  <body>
-    <div class="bg"></div>
-    <div class="container">
-      <div class="top-div">
-        <h1 class="title">Stone of monsters</h1>
-        <button
-          type="button"
-          class="collapse-div-btn"
-        >
-          Reveal monster sources
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Find a monster</title>
+  <!-- Primary Meta Tags -->
+  <title>Quickly find the Dungeons and Dragons monster you are looking for. </title>
+  <meta name="title" content="Quickly find the Dungeons and Dragons monster you are looking for. " />
+  <meta name="description"
+    content="This is your magic item of monster finding. No clutter, just find that monster! A quick monster lookup that doesn't distract you. " />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dnd-monster-lookup.vercel.app/" />
+  <meta property="og:title" content="Quickly find the Dungeons and Dragons monster you are looking for. " />
+  <meta property="og:description"
+    content="This is your magic item of monster finding. No clutter, just find that monster! A quick monster lookup that doesn't distract you. " />
+  <meta property="og:image" content="public/img/stone-of-monster-meta-1200x628.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://dnd-monster-lookup.vercel.app/" />
+  <meta property="twitter:title" content="Quickly find the Dungeons and Dragons monster you are looking for. " />
+  <meta property="twitter:description"
+    content="This is your magic item of monster finding. No clutter, just find that monster! A quick monster lookup that doesn't distract you. " />
+  <meta property="twitter:image" content="public/img/stone-of-monster-meta-1200x628.png" />
+  <!-- Meta Tags Generated with https://metatags.io -->
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
+  <script src="awesomplete.js" async></script>
+  <script src="script.js"></script>
+  <!-- Stylesheets and fonts -->
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="awesomplete.css" />
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png" />
+  <link rel="manifest" href="favicons/manifest.json" />
+  <meta name="msapplication-TileColor" content="#111" />
+  <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png" />
+  <meta name="theme-color" content="#000" />
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="container">
+    <div class="top-div">
+      <h1 class="title">Stone of monsters</h1>
+      <button type="button" class="collapse-div-btn">
+        Reveal monster sources
+      </button>
+      <div id="sourceFilter" class="source-filters">
+        <div class="checkboxes">
+          <label>
+            <input class="check-gem" type="checkbox" value="all" checked />
+            All Sources
+          </label>
+          <label>
+            <input type="checkbox" value="wotc-srd" />
+            5e Core Rules (wotc-srd)
+          </label>
+          <h3>Kobold Press™</h3>
+          <label>
+            <input type="checkbox" value="tob" />
+            Tome of Beasts
+          </label>
+          <label>
+            <input type="checkbox" value="tob2" />
+            Tome of Beasts 2
+          </label>
+          <label>
+            <input type="checkbox" value="tob3" />
+            Tome of Beasts 3
+          </label>
+          <label>
+            <input type="checkbox" value="tob-2023" />
+            Tome of Beasts 2023
+          </label>
+          <label>
+            <input type="checkbox" value="cc" />
+            Creature Codex
+          </label>
+          <label>
+            <input type="checkbox" value="menagerie" />
+            Menagerie
+          </label>
+          <label>
+            <input type="checkbox" value="blackflag" />
+            Blackflag
+          </label>
+        </div>
+        <button id="uncheckAllBtn" class="source-filter-btn">
+          Reset filters
         </button>
-        <div
-          id="sourceFilter"
-          class="source-filters"
-        >
-          <div class="checkboxes">
-            <label>
-              <input
-                class="check-gem"
-                type="checkbox"
-                value="all"
-                checked
-              />
-              All Sources
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="wotc-srd"
-              />
-              5e Core Rules (wotc-srd)
-            </label>
-            <h3>Kobold Press™</h3>
-            <label>
-              <input
-                type="checkbox"
-                value="tob"
-              />
-              Tome of Beasts
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="tob2"
-              />
-              Tome of Beasts 2
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="tob3"
-              />
-              Tome of Beasts 3
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="tob-2023"
-              />
-              Tome of Beasts 2023
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="cc"
-              />
-              Creature Codex
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="menagerie"
-              />
-              Menagerie
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="blackflag"
-              />
-              Blackflag
-            </label>
-          </div>
-          <button
-            id="uncheckAllBtn"
-            class="source-filter-btn"
-          >
-            Reset filters
-          </button>
-        </div>
-        <div class="monster-search-container">
-          <input
-            type="text"
-            id="monsterInput"
-            class="awesomplete monster-input"
-            placeholder="Search for a monster"
-          />
-          <button
-            id="searchButton"
-            class="gem-button"
-          >
-            Fetch monster
-          </button>
-        </div>
-        <div
-          id="monsterResult"
-          class="monster-result magical-output"
-        ></div>
       </div>
-      <div class="bottom-div">
-        <p class="cryptic-rune">
-          <a
-            href="https://buymeacoffee.com/gravem"
-            alt="Spare a coffee for the monster hunter?"
-            >※</a
-          >
-        </p>
+      <div class="monster-search-container">
+        <input type="text" id="monsterInput" class="awesomplete monster-input" placeholder="Search for a monster" />
+        <button id="searchButton" class="gem-button">
+          Fetch monster
+        </button>
       </div>
+      <div id="monsterResult" class="monster-result magical-output"></div>
     </div>
-  </body>
+    <div class="bottom-div">
+      <p class="cryptic-rune">
+        <a href="https://buymeacoffee.com/gravem" alt="Spare a coffee for the monster hunter?">※</a>
+      </p>
+    </div>
+  </div>
+</body>
+
 </html>
